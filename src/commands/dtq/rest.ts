@@ -1,7 +1,5 @@
-import {flags} from '@oclif/command';
 import {join} from 'path';
-import {SfdxCommand, core} from '@salesforce/command';
-import * as express from 'express';
+import {flags, SfdxCommand, core} from '@salesforce/command';
 
 core.Messages.importMessagesDirectory(join(__dirname, '..', '..', '..'));
 const messages = core.Messages.loadMessages('rest-explorer', 'org');
@@ -15,10 +13,10 @@ export default class Rest extends SfdxCommand {
   ];
 
   protected static flagsConfig = {
-    file: flags.boolean({char: 'f'}),
-    body: flags.string({char: 'b'}),
-    endpoint: flags.string({char: 'e'}),
-    method: flags.string({char: 'm'})
+    file: flags.boolean({char: 'f', description: 'File', required: false}),
+    body: flags.string({char: 'b', description: 'Body of request', required: false}),
+    endpoint: flags.string({char: 'e', description: 'Endpoint for request', required: true}),
+    method: flags.string({char: 'm', description: 'Request method', required: false})
   };
 
   protected static requiresUsername = true;
