@@ -26,7 +26,6 @@ export default class Rest extends SfdxCommand {
     const conn = this.org.getConnection();
 
     const endpoint = conn.instanceUrl + this.flags.endpoint;
-    this.ux.log('Endpoint: ' + this.flags.endpoint);
 
     const result = await conn.request({
       method: this.flags.method,
